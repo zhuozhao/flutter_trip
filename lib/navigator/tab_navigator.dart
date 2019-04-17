@@ -13,9 +13,7 @@ class TabNavigator extends StatefulWidget {
 }
 
 class _TabNavigatorState extends State<TabNavigator> {
-  final PageController _controller = PageController(
-    initialPage: 0,
-  );
+  final PageController _controller = PageController(initialPage: 0);
   int _currrentIndex = 0; //当前选中的tab
   final _defaultColor = Colors.grey;
   final _activeColor = Colors.blue;
@@ -24,6 +22,7 @@ class _TabNavigatorState extends State<TabNavigator> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
+      //appBar: AppBar(title: Text('网泽车联'),centerTitle: true),
       body: PageView(
         controller: _controller,
         children: <Widget>[
@@ -32,8 +31,13 @@ class _TabNavigatorState extends State<TabNavigator> {
           new TravelPage(),
           new MyPage()
         ],
+        onPageChanged: (index){
+          setState(() {
+            _currrentIndex = index;
+          });
+        },
       ),
-      bottomNavigationBar: BottomNavigationBar(
+        bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currrentIndex,
           onTap: (index) {
             _controller.jumpToPage(index);
