@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                       children: <Widget>[
                         Expanded(child:  ConstrainedBox(child: Image.asset('images/home_button_bg_lccx.png',fit: BoxFit.fill,),constraints: BoxConstraints.expand(),),flex: 1,),
                         SizedBox(height: 5,),
-                        Expanded(child:  ConstrainedBox(child: Image.asset('images/home_button_bg_lccx.png',fit: BoxFit.fill,),constraints: BoxConstraints.expand(),),flex: 1,),
+                        Expanded(child:  ConstrainedBox(child: Image.asset('images/home_button_bg_yhcx.png',fit: BoxFit.fill,),constraints: BoxConstraints.expand(),),flex: 1,),
                       ],
                     ),
                   ),
