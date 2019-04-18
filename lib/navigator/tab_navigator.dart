@@ -22,7 +22,7 @@ class _TabNavigatorState extends State<TabNavigator> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      //appBar: AppBar(title: Text('网泽车联'),centerTitle: true),
+      //appBar: AppBar(title: Text('网泽车联'),centerTitle: false),
       body: PageView(
         controller: _controller,
         children: <Widget>[

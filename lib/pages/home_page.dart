@@ -27,20 +27,62 @@ class _HomePageState extends State<HomePage> {
       body: Center(
         child: Column(
           children: <Widget>[
-            Container(
-              height: 160,
-              child: Swiper(
-                itemCount: _imagesUrl.length,
-                autoplay: true,
-                pagination: SwiperPagination(),
-                itemBuilder: (BuildContext context, int index) {
-                  return new Image.network(
-                    _imagesUrl[index],
-                    fit: BoxFit.fill,
-                  );
-                },
+            Expanded(
+              flex: 1,
+              child: Container(
+                color: Colors.grey,
+                child: Swiper(
+                  itemCount: _imagesUrl.length,
+                  autoplay: true,
+                  pagination: SwiperPagination(),
+                  itemBuilder: (BuildContext context, int index) {
+                    return new Image.network(
+                      _imagesUrl[index],
+                      fit: BoxFit.fill,
+                    );
+                  },
+                ),
               ),
-            )
+            ),
+            SizedBox(height: 5,),
+            Expanded(
+              flex: 1,
+                child: Container(
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(child:  ConstrainedBox(child: Image.asset('images/homessjk.png',fit: BoxFit.fill,),constraints: BoxConstraints.expand(),),flex: 1,),
+                      SizedBox(width: 5,),
+                      Expanded(child:  ConstrainedBox(child: Image.asset('images/home_button_bg_gjhf.png',fit: BoxFit.fill,),constraints: BoxConstraints.expand(),),flex: 1,),
+                    ],
+                  ),
+                ),
+
+            ),
+            SizedBox(height: 5,),
+            Expanded(
+              flex: 1,
+              child: Row(
+
+                children: <Widget>[
+
+                  Expanded(
+                    flex: 1,
+                    child: Column(
+                      children: <Widget>[
+                        Expanded(child:  ConstrainedBox(child: Image.asset('images/home_button_bg_lccx.png',fit: BoxFit.fill,),constraints: BoxConstraints.expand(),),flex: 1,),
+                        SizedBox(height: 5,),
+                        Expanded(child:  ConstrainedBox(child: Image.asset('images/home_button_bg_lccx.png',fit: BoxFit.fill,),constraints: BoxConstraints.expand(),),flex: 1,),
+                      ],
+                    ),
+                  ),
+                  SizedBox(width: 5,),
+                  Expanded(child:  ConstrainedBox(child: Image.asset('images/home_button_bg_poi.png',fit: BoxFit.fill,),constraints: BoxConstraints.expand(),),flex: 1,),
+                ],
+              ),
+
+            ),
+            SizedBox(height: 5,),
+
           ],
         ),
       ),
