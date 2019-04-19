@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:flutter_trip/pages/car_monitoring.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -44,45 +45,105 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            SizedBox(height: 5,),
+            SizedBox(
+              height: 5,
+            ),
             Expanded(
               flex: 1,
-                child: Container(
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(child:  ConstrainedBox(child: Image.asset('images/homessjk.png',fit: BoxFit.fill,),constraints: BoxConstraints.expand(),),flex: 1,),
-                      SizedBox(width: 5,),
-                      Expanded(child:  ConstrainedBox(child: Image.asset('images/home_button_bg_gjhf.png',fit: BoxFit.fill,),constraints: BoxConstraints.expand(),),flex: 1,),
-                    ],
-                  ),
-                ),
+              child: Container(
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: InkWell(
+                        child: ConstrainedBox(
+                          child:  Image.asset(
+                            'images/homessjk.png',
+                            fit: BoxFit.fill,
 
+                          ),
+                          constraints: BoxConstraints.expand(),
+                        ),
+                        onTap: (){
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => new CarMonitoring()),
+                          );
+                        },
+                      ),
+                      flex: 1,
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Expanded(
+                      child: ConstrainedBox(
+                        child: Image.asset(
+                          'images/home_button_bg_gjhf.png',
+                          fit: BoxFit.fill,
+                        ),
+                        constraints: BoxConstraints.expand(),
+                      ),
+                      flex: 1,
+                    ),
+                  ],
+                ),
+              ),
             ),
-            SizedBox(height: 5,),
+            SizedBox(
+              height: 5,
+            ),
             Expanded(
               flex: 1,
               child: Row(
-
                 children: <Widget>[
-
                   Expanded(
-                    flex: 1,
-                    child: Column(
-                      children: <Widget>[
-                        Expanded(child:  ConstrainedBox(child: Image.asset('images/home_button_bg_lccx.png',fit: BoxFit.fill,),constraints: BoxConstraints.expand(),),flex: 1,),
-                        SizedBox(height: 5,),
-                        Expanded(child:  ConstrainedBox(child: Image.asset('images/home_button_bg_yhcx.png',fit: BoxFit.fill,),constraints: BoxConstraints.expand(),),flex: 1,),
-                      ],
-                    ),
+                      flex: 1,
+                      child: Column(
+                        children: <Widget>[
+                          Expanded(
+                            child: ConstrainedBox(
+                              child: Image.asset(
+                                'images/home_button_bg_lccx.png',
+                                fit: BoxFit.fill,
+                              ),
+                              constraints: BoxConstraints.expand(),
+                            ),
+                            flex: 1,
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Expanded(
+                            child: ConstrainedBox(
+                              child: Image.asset(
+                                'images/home_button_bg_yhcx.png',
+                                fit: BoxFit.fill,
+                              ),
+                              constraints: BoxConstraints.expand(),
+                            ),
+                            flex: 1,
+                          ),
+                        ],
+                      )),
+                  SizedBox(
+                    width: 5,
                   ),
-                  SizedBox(width: 5,),
-                  Expanded(child:  ConstrainedBox(child: Image.asset('images/home_button_bg_poi.png',fit: BoxFit.fill,),constraints: BoxConstraints.expand(),),flex: 1,),
+                  Expanded(
+                    child: ConstrainedBox(
+                      child: Image.asset(
+                        'images/home_button_bg_poi.png',
+                        fit: BoxFit.fill,
+                      ),
+                      constraints: BoxConstraints.expand(),
+                    ),
+                    flex: 1,
+                  ),
                 ],
               ),
-
             ),
-            SizedBox(height: 5,),
-
+            SizedBox(
+              height: 5,
+            ),
           ],
         ),
       ),
