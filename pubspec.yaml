@@ -51,6 +51,7 @@ flutter:
     - images/home_button_bg_poi.png
     - images/homessjk.png
     - images/home_button_bg_yhcx.png
+    - images/mark_car_runing.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
