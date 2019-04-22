@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter_trip/pages/car_monitoring.dart';
+import 'package:flutter_trip/pages/car_path_playback.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -76,12 +77,20 @@ class _HomePageState extends State<HomePage> {
                       width: 5,
                     ),
                     Expanded(
-                      child: ConstrainedBox(
-                        child: Image.asset(
-                          'images/home_button_bg_gjhf.png',
-                          fit: BoxFit.fill,
+                      child: InkWell(
+                        child: ConstrainedBox(
+                          child: Image.asset(
+                            'images/home_button_bg_gjhf.png',
+                            fit: BoxFit.fill,
+                          ),
+                          constraints: BoxConstraints.expand(),
                         ),
-                        constraints: BoxConstraints.expand(),
+                        onTap: (){
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => new CarPathPlayback()),
+                          );
+                        },
                       ),
                       flex: 1,
                     ),
