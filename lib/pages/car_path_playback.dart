@@ -1,8 +1,15 @@
-
 import 'package:flutter/material.dart';
 import 'package:amap_base/amap_base.dart';
 
-class CarPathPlayback extends StatefulWidget{
+const markerList = const [
+  LatLng(30.308802, 120.071179),
+  LatLng(30.2412, 120.00938),
+  LatLng(30.296945, 120.35133),
+  LatLng(30.328955, 120.365063),
+  LatLng(30.181862, 120.369183),
+];
+
+class CarPathPlayback extends StatefulWidget {
   @override
   _CarPathPlaybackState createState() {
     // TODO: implement createState
@@ -10,32 +17,43 @@ class CarPathPlayback extends StatefulWidget{
   }
 }
 
-class _CarPathPlaybackState extends State<CarPathPlayback>{
-
-
+class _CarPathPlaybackState extends State<CarPathPlayback> {
   AMapController _controller;
-
-
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
 
-
-
     return Scaffold(
-      appBar: AppBar(title: Text('实时监控'),centerTitle: false,),
+      appBar: AppBar(
+        title: Text('轨迹回放'),
+        centerTitle: false,
+      ),
       body: AMapView(
-          onAMapViewCreated: (controller){
-            _controller = controller;
-          },
+        onAMapViewCreated: (controller) {
+          _controller = controller;
+          _controller.markerClickedEvent.listen((marker) {
+
+            print(marker);
+//            Scaffold.of(context)
+//                .showSnackBar(SnackBar(content: Text(marker.toString())));
+          });
+          controller.addMarkers(markerList
+              .map((latLng) => MarkerOptions(
+                    icon: 'images/mark_car_runing.png',
+                    position: latLng,
+                    title: '哈哈',
+                    snippet: '呵呵',
+                  ))
+              .toList());
+        },
         amapOptions: AMapOptions(
-          compassEnabled: false,
+          compassEnabled: true,
           zoomControlsEnabled: true,
-          logoPosition: LOGO_POSITION_BOTTOM_CENTER,
+          rotateGesturesEnabled: false,
           camera: CameraPosition(
             target: LatLng(30.851827, 120.801637),
-            zoom: 15,
+            zoom: 12,
           ),
         ),
       ),
@@ -47,6 +65,4 @@ class _CarPathPlaybackState extends State<CarPathPlayback>{
     _controller.dispose();
     super.dispose();
   }
-
 }
-
