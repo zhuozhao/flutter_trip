@@ -11,10 +11,28 @@ class UserLogin extends StatefulWidget{
 
 class _UserLoginState extends State<UserLogin>{
 
-
+  String account,password;
   TextEditingController accountController = TextEditingController();
   TextEditingController pwdController = TextEditingController();
+  final loginFormKey = GlobalKey<FormState>();
 
+
+
+  String vldAccount(value){
+
+    if(value.isEmpty){
+      return '请输入账号';
+    }
+    return null;
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    //初始化账号密码
+    accountController.text='qzsphnt';
+    pwdController.text ='qzsphnt2011';
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +40,19 @@ class _UserLoginState extends State<UserLogin>{
 
     _buildEditWidget(){
       return Container(
-        margin: EdgeInsets.all(5),
-        child: TextField(
+        margin: EdgeInsets.all(16),
+        child: TextFormField(
+          onSaved: (value){
+            account = value;
+          },
+          validator: vldAccount,
           controller: accountController,
           obscureText: false,
           decoration: InputDecoration(
               labelText: '账号',
               hintText: "请输入账号",
-              prefixIcon: Icon(Icons.person)
+              prefixIcon: Icon(Icons.person),
+              border: OutlineInputBorder()
           ),
 
         ),
@@ -38,14 +61,21 @@ class _UserLoginState extends State<UserLogin>{
 
     _buildPwdEditWidget(){
       return Container(
-        margin: EdgeInsets.all(5),
-        child: TextField(
+        margin: EdgeInsets.all(16),
+        child: TextFormField(
+//          onSubmitted: (value){
+//            debugPrint('submit:$value');
+//          },
+          onSaved: (value){
+            password =value;
+          },
           controller: pwdController,
           obscureText: true,
           decoration: InputDecoration(
               labelText: '密码',
               hintText: "请输入密码",
-              prefixIcon: Icon(Icons.lock)
+              prefixIcon: Icon(Icons.lock),
+              border: OutlineInputBorder()
           ),
 
         ),
@@ -56,8 +86,15 @@ class _UserLoginState extends State<UserLogin>{
       appBar: AppBar(title: Text('登录'),centerTitle: false,),
       body: ListView(
         children: <Widget>[
-          _buildEditWidget(),
-          _buildPwdEditWidget(),
+          Form(
+            key: loginFormKey,
+            child: Column(
+              children: <Widget>[
+                _buildEditWidget(),
+                _buildPwdEditWidget(),
+              ],
+            ),
+          ),
           //登录按钮
           Container(
             margin: EdgeInsets.all(20),
@@ -77,10 +114,19 @@ class _UserLoginState extends State<UserLogin>{
     );
   }
 
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    accountController.dispose();
+    pwdController.dispose();
+    super.dispose();
+  }
 
   void _login(){
 
-    print({'account': accountController.text, 'password': pwdController.text});
+    loginFormKey.currentState.save();
+    loginFormKey.currentState.validate();
+    debugPrint('account: $account password: $password');
 
    //getHttp();
   }
