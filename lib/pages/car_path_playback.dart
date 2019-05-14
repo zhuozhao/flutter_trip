@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:amap_base/amap_base.dart';
+import 'package:amap_base_map/amap_base_map.dart';
 
 const markerList = const [
   LatLng(30.308802, 120.071179),

@@ -1,7 +1,11 @@
+import 'package:amap_base_map/amap_base_map.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_trip/navigator/tab_navigator.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  await AMap.init('27d67839721288be2ddd87b4fd868822');
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
