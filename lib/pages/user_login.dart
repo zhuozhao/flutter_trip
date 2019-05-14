@@ -52,6 +52,7 @@ class _UserLoginState extends State<UserLogin>{
               labelText: '账号',
               hintText: "请输入账号",
               prefixIcon: Icon(Icons.person),
+              contentPadding: EdgeInsets.all(5),
               border: OutlineInputBorder()
           ),
 
@@ -75,6 +76,7 @@ class _UserLoginState extends State<UserLogin>{
               labelText: '密码',
               hintText: "请输入密码",
               prefixIcon: Icon(Icons.lock),
+              contentPadding: EdgeInsets.all(5),
               border: OutlineInputBorder()
           ),
 
@@ -97,8 +99,8 @@ class _UserLoginState extends State<UserLogin>{
           ),
           //登录按钮
           Container(
-            margin: EdgeInsets.all(20),
-            height: 50,
+            margin: EdgeInsets.all(16),
+            height: 45,
             child: FlatButton(
               child: Text('登录',style: TextStyle(color: Colors.white),),
               color: Colors.blue,
